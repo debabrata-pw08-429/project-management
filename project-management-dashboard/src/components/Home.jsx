@@ -95,7 +95,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Welcome to the Projects</h1>
+      <h1>Welcome to the Projects - {localStorage.getItem("Role")}</h1>
       <button onClick={handleAddProject}>Add Project</button>
       <button onClick={handleDeleteAllProjects}>DELETE ALL</button>
 
@@ -121,6 +121,18 @@ const Home = () => {
             onChange={(e) => setProjectTask(e.target.value)}
             placeholder="Enter project associated task"
           />
+
+          {localStorage.getItem("Role") === "Project Manager" ? (
+            <>
+              <h2>Assign To</h2>
+              <select>
+                <option value="">Select Employee</option>
+                <option value="Ram">Ram</option>
+                <option value="Sam">Sam</option>
+              </select>
+            </>
+          ) : null}
+
           <button onClick={handleSaveProject}>
             {currentIndex === -1 ? "Save" : "Update"}
           </button>
