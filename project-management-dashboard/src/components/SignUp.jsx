@@ -11,6 +11,11 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const handleChange = (event) => {
+    const selectedRole = event.target.value;
+    localStorage.setItem("Role", selectedRole);
+  };
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -35,6 +40,11 @@ function SignUp() {
       <h2>Sign Up</h2>
       {error && <div>{error}</div>}
       <form onSubmit={handleSubmit}>
+        <select onChange={handleChange}>
+          <option value="" selected>Select Role</option>
+          <option value="project-manager">Project Manager</option>
+          <option value="employee">Employee</option>
+        </select>
         <input type="email" ref={emailRef} required placeholder="Email" />
         <input
           type="password"

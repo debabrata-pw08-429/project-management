@@ -16,7 +16,17 @@ function SignIn() {
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+
+      let loginDetails = await login(
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+
+      localStorage.setItem(
+        "firebase_token",
+        loginDetails._tokenResponse.idToken
+      );
+
       navigate("/");
     } catch {
       setError("Failed to sign in");

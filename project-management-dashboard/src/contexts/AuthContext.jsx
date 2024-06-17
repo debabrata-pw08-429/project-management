@@ -22,7 +22,8 @@ export function AuthProvider({ children }) {
   }
 
   function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+    let loginDetails = signInWithEmailAndPassword(auth, email, password);
+    return loginDetails;
   }
 
   function logout() {
